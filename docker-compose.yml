@@ -1,0 +1,17 @@
+version: '3'
+services:
+  nginx:
+    image: nginx:latest
+    ports:
+      - 80:80
+    volumes:
+      - ./front:/var/www/front
+    depends_on:
+      - php
+
+  php:
+    build:
+      context: ./back
+      dockerfile: Dockerfile
+    volumes:
+      - ./back:/var/www/back
